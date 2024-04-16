@@ -54,7 +54,7 @@ namespace ChessLogic
             for (int i = 0; i < 8; i++)
             {
                 this[1, i] = new Pawn(Player.Black);
-                this[6, i] = new Pawn(Player.Black);
+                this[6, i] = new Pawn(Player.White);
             }
         }
 
