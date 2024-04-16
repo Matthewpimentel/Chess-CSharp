@@ -26,7 +26,7 @@ namespace ChessLogic
                 foreach(Direction hDir in new Direction[] {Direction.West, Direction.East })
                 {
                     yield return from + 2 * vDir + hDir;
-                    yield return from + 2 * hDir + hDir;
+                    yield return from + 2 * hDir + vDir;
                 }
             }
         }
