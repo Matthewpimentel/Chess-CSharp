@@ -110,8 +110,31 @@ namespace ChessGUI
 
             if(moveCache.TryGetValue(pos, out Move move))
             {
-                HandleMove(move);
+                if(move.Type == MoveType.PawnPromotion)
+                {
+                    HandlePromotion(move.FromPos, move.ToPos);
+                }
+                else
+                {
+                    HandleMove(move);
+                }
             }
+        }
+
+        private void HandlePromotion(Position fromPos, Position toPos)
+        {
+            pieceImages[toPos.Row, toPos.Column].Source = Images.GetImage(gameState.CurrentPlayer, PieceType.Pawn);
+            pieceImages[fromPos.Row, fromPos.Column].Source = null;
+
+            PromotionMenu promotionMenu = new PromotionMenu(gameState.CurrentPlayer);
+            MenuContainer.Content = promotionMenu;
+
+            promotionMenu.PieceSelected += type =>
+            {
+                MenuContainer.Content = null;
+                Move promMove = new PawnPromotion(fromPos, toPos, type);
+                HandleMove(promMove);
+            };
         }
 
         private void HandleMove(Move move)
