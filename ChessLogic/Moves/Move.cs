@@ -12,6 +12,6 @@ namespace ChessLogic
         public abstract Position FromPos { get; }
         public abstract Position ToPos { get; }
 
-        public abstract void Execture(Board board);
+        public abstract void Execute(Board board);
     }
 }
