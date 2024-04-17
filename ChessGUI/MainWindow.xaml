@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ChessGUI"
         mc:Ignorable="d"
         Title="Chess" Width="600" SizeToContent="Height" Icon="Assets/icon.ico"
-        WindowStartupLocation="CenterScreen" Background="#101010">
+        WindowStartupLocation="CenterScreen" Background="#101010" KeyDown="Window_KeyDown">
     <Viewbox>
         <Grid x:Name="BoardGrid" Width="600" Height="600" MouseDown="BoardGrid_MouseDown" RenderOptions.BitmapScalingMode="HighQuality">
             <Grid.Background>
