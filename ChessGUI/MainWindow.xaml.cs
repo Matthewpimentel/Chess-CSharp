@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ChessAI;
 using ChessLogic;
 using ChessLogic.Pieces;
 
@@ -21,6 +22,7 @@ namespace ChessGUI
         private readonly Image[,] pieceImages = new Image[8,8];
         private readonly Rectangle[,] highlights = new Rectangle[8,8];
         private readonly Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
+        private AI ai = new AI();
 
         private GameState gameState;
         private Position selectedPos = null;
@@ -141,6 +143,10 @@ namespace ChessGUI
         private void HandleMove(Move move)
         {
             gameState.MakeMove(move);
+            if (!gameState.IsGameOver() && gameState.CurrentPlayer == Player.Black)
+            {
+                gameState.MakeMove(ai.GiveMove(gameState));
+            }
             DrawBoard(gameState.Board);
             UpdateValues();
 

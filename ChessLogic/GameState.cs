@@ -1,5 +1,4 @@
 ﻿using ChessLogic.Pieces;
-
 namespace ChessLogic
 {
     public class GameState
@@ -17,6 +16,10 @@ namespace ChessLogic
         public GameState(Player player, Board board)
         {
             CurrentPlayer = player;
+            if(CurrentPlayer == Player.Black)
+            {
+                
+            }
             Board = board;
 
             stateString = new StateString(CurrentPlayer, board).ToString();
