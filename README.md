@@ -1,6 +1,6 @@
-# Chess Game
+# Chess C#
 
-Chess Game is a project developed in C# using WPF (Windows Presentation Foundation). It allows you to play chess against an AI opponent.
+Chess C# is a project developed in C# using WPF (Windows Presentation Foundation). It allows you to play chess against an AI opponent.
 
 ## Features
 
