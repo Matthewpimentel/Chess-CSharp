@@ -5,23 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessGUI"
         mc:Ignorable="d"
-        Title="Chess" Width="600" SizeToContent="Height" Icon="Assets/icon.ico"
+        Title="Chess" Width="800" Height="600" Icon="Assets/icon.ico"
         WindowStartupLocation="CenterScreen" Background="#101010" KeyDown="Window_KeyDown">
-    <Viewbox>
-        <Grid x:Name="BoardGrid" Width="600" Height="600" MouseDown="BoardGrid_MouseDown" RenderOptions.BitmapScalingMode="HighQuality">
-            <Grid.Background>
-                <ImageBrush ImageSource="Assets/Board.png"/>
-            </Grid.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <!-- For labels "White:" and "Black:" -->
+            <ColumnDefinition/>
+            <!-- For the main content -->
+        </Grid.ColumnDefinitions>
 
-            <UniformGrid x:Name="HighlightGrid" Rows="8" Columns="8">
-                
-            </UniformGrid>
+        <!-- Display "White:" label at the bottom -->
+        <TextBlock Text="White: 0" x:Name="White_Value" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Style="{StaticResource TextStyle}" FontSize="20"/>
 
-            <UniformGrid x:Name="PieceGrid" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality">
-                
-            </UniformGrid>
+        <!-- Display "Black:" label at the top -->
+        <TextBlock Text="Black: 0" x:Name="Black_Value" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" Style="{StaticResource TextStyle}" FontSize="20"/>
 
-            <ContentControl x:Name="MenuContainer"></ContentControl>
-        </Grid>
-    </Viewbox>
+        <!-- Main content, including the board -->
+        <Viewbox Grid.Column="1" Margin="20">
+            <Grid x:Name="BoardGrid" Width="600" Height="600" MouseDown="BoardGrid_MouseDown" RenderOptions.BitmapScalingMode="HighQuality">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Assets/Board.png"/>
+                </Grid.Background>
+
+                <UniformGrid x:Name="HighlightGrid" Rows="8" Columns="8">
+
+                </UniformGrid>
+
+                <UniformGrid x:Name="PieceGrid" Rows="8" Columns="8" RenderOptions.BitmapScalingMode="HighQuality">
+
+                </UniformGrid>
+
+                <ContentControl x:Name="MenuContainer"></ContentControl>
+            </Grid>
+        </Viewbox>
+    </Grid>
 </Window>

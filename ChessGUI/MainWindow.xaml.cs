@@ -31,6 +31,7 @@ namespace ChessGUI
             InitializeBoard();
 
             gameState = new GameState(Player.White, Board.Initial());
+            Counting count = new Counting();
             DrawBoard(gameState.Board);
         }
 
@@ -108,7 +109,7 @@ namespace ChessGUI
             selectedPos = null;
             HideHighLights();
 
-            if(moveCache.TryGetValue(pos, out Move move))
+            if (moveCache.TryGetValue(pos, out Move move))
             {
                 if(move.Type == MoveType.PawnPromotion)
                 {
@@ -141,6 +142,7 @@ namespace ChessGUI
         {
             gameState.MakeMove(move);
             DrawBoard(gameState.Board);
+            UpdateValues();
 
             if (gameState.IsGameOver())
             {
@@ -230,6 +232,15 @@ namespace ChessGUI
                     RestartGame();
                 }
             };
+        }
+
+        private void UpdateValues()
+        {
+            int white = gameState.Board.whiteValue;
+            int black = gameState.Board.blackValue;
+
+            White_Value.Text = $"White: {white}";
+            Black_Value.Text = $"Black: {black}";
         }
     }
 }
